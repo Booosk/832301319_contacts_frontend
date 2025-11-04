@@ -1,0 +1,106 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="header card">
+    <view class="title-section">
+      <text class="title">学友通讯录</text>
+      <text class="subtitle">管理您的联系人信息</text>
+     
+    </view>
+    <button class="add-btn" bindtap="goToAdd">
+      <text class="btn-icon">添加联系人</text>
+     
+    </button>
+  </view>
+<!-- 统计卡片 -->
+<view class="stats-card card" wx:if="{{contacts.length > 0}}">
+    <view class="stat-item">
+      <text class="stat-number">{{stats.total}}</text>
+      <text class="stat-label">总联系人</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.hasPhoto}}</text>
+      <text class="stat-label">有照片</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.hasEmail}}</text>
+      <text class="stat-label">有邮箱</text>
+    </view>
+  </view>
+
+  <!-- 搜索框 -->
+  <view class="search-box card" wx:if="{{contacts.length > 0}}">
+    <view class="search-container">
+      <text class="search-icon">🔍</text>
+      <input 
+        class="search-input" 
+        placeholder="搜索姓名、电话、邮箱..." 
+        bindinput="onSearchInput"
+        value="{{searchText}}"
+      />
+      <text class="clear-icon" wx:if="{{searchText}}" bindtap="clearSearch">✕</text>
+    </view>
+  </view>
+
+  <!-- 联系人列表 -->
+  <view class="contact-list card">
+    <view wx:if="{{filteredContacts.length === 0 && searchText}}" class="empty-state">
+      <text class="empty-text">🔍 没有找到相关联系人</text>
+      <text class="empty-tip">尝试调整搜索关键词</text>
+      <button class="clear-search-btn" bindtap="clearSearch">清除搜索</button>
+    </view>
+    
+    <view wx:if="{{filteredContacts.length === 0 && !searchText && !isLoading}}" class="empty-state">
+      <text class="empty-text">📭 通讯录空空如也</text>
+      <text class="empty-tip">点击上方按钮添加第一个联系人吧！</text>
+    </view>
+
+    <!-- 优化后的横向卡片布局 -->
+    <view class="contacts-grid">
+      <view 
+        wx:for="{{filteredContacts}}" 
+        wx:key="id" 
+        class="contact-card"
+      >
+        <!-- 头像/照片区域 -->
+        <view class="card-avatar" bindtap="previewPhoto" data-photo="{{item.photo}}">
+          <image wx:if="{{item.photo}}" src="{{item.photo}}" class="avatar-image" mode="aspectFill" />
+          <text wx:else class="avatar-text">{{item.name.charAt(0)}}</text>
+          <text wx:if="{{item.photo}}" class="photo-indicator">📷</text>
+        </view>
+        
+        <!-- 联系人信息 -->
+        <view class="card-content">
+          <view class="main-info">
+            <view class="name-row">
+              <text class="name">{{item.name}}</text>
+              <text class="id-tag">#{{item.id}}</text>
+            </view>
+            
+            <view class="phone-row">
+              <text class="phone-icon">📱</text>
+              <text class="phone">{{item.phone}}</text>
+              <button class="call-btn" bindtap="makeCall" data-phone="{{item.phone}}">拨打</button>
+            </view>
+          </view>
+          
+          <!-- 额外信息 -->
+          <view class="extra-info" wx:if="{{item.email || item.address}}">
+            <text class="email" wx:if="{{item.email}}">📧 {{item.email}}</text>
+            <text class="address" wx:if="{{item.address}}">🏠 {{item.address}}</text>
+          </view>
+          
+          <!-- 编辑删除按钮 - 始终在最底部 -->
+          <view class="bottom-actions">
+            <button class="edit-btn" bindtap="editContact" data-id="{{item.id}}">编辑</button>
+            <button class="delete-btn" bindtap="deleteContact" data-id="{{item.id}}">删除</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{isLoading}}" class="loading-state">
+    <text class="loading-text">加载中...</text>
+  </view>
+</view>

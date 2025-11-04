@@ -1,0 +1,382 @@
+.container {
+  padding: 20rpx;
+  background: linear-gradient(135deg, #F8F9FD 0%, #F0F4FF 100%);
+  min-height: 100vh;
+}
+
+/* 头部样式 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30rpx;
+  padding: 40rpx 30rpx;
+  background: linear-gradient(135deg, #ffffff 0%, #F8F9FD 100%);
+  border: 2rpx solid #E1E8F5;
+  border-radius: 20rpx;
+}
+
+.title-section {
+  flex: 1;
+}
+
+.title {
+  display: block;
+  font-size: 44rpx;
+  font-weight: bold;
+  background: linear-gradient(135deg, #92A8D1, #A8C1D4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10rpx;
+}
+
+.subtitle {
+  display: block;
+  font-size: 26rpx;
+  color: #92A8D1;
+  margin-bottom: 5rpx;
+}
+
+.team-signature {
+  display: block;
+  font-size: 20rpx;
+  color: #F7CAC9;
+  font-style: italic;
+}
+
+.add-btn {
+  background: linear-gradient(135deg, #F7CAC9, #F4A6A3);
+  color: white;
+  border-radius: 50rpx;
+  padding: 0 30rpx;
+  height: 70rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  box-shadow: 0 6rpx 20rpx rgba(247, 202, 201, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  border: 2rpx solid #F4D4D3;
+  text-align: center;
+}
+
+.btn-icon {
+  font-size: 36rpx;
+  
+}
+
+/* 统计卡片 */
+.stats-card {
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  background: linear-gradient(135deg, #ffffff 0%, #F8F9FD 100%);
+  border: 2rpx solid #E1E8F5;
+  border-radius: 20rpx;
+}
+
+.stat-item {
+  text-align: center;
+  flex: 1;
+}
+
+.stat-number {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #92A8D1;
+  margin-bottom: 10rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 搜索框 */
+.search-box {
+  padding: 25rpx;
+  margin-bottom: 30rpx;
+  background: linear-gradient(135deg, #ffffff 0%, #F8F9FD 100%);
+  border: 2rpx solid #E1E8F5;
+  border-radius: 20rpx;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 25rpx;
+  font-size: 28rpx;
+  color: #999;
+  z-index: 2;
+}
+
+.search-input {
+  width: 100%;
+  height: 75rpx;
+  background: #F8F9FD;
+  border-radius: 40rpx;
+  padding: 0 70rpx;
+  font-size: 28rpx;
+  border: 2rpx solid #E1E8F5;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  border-color: #92A8D1;
+  box-shadow: 0 0 15rpx rgba(146, 168, 209, 0.3);
+}
+
+.clear-icon {
+  position: absolute;
+  right: 25rpx;
+  font-size: 28rpx;
+  color: #999;
+  z-index: 2;
+}
+
+/* 联系人列表 */
+.contact-list {
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+/* 新的网格布局 */
+.contacts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+/* 联系人卡片 */
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 25rpx;
+  background: white;
+  border-radius: 20rpx;
+  border: 2rpx solid #E1E8F5;
+  box-shadow: 0 4rpx 15rpx rgba(146, 168, 209, 0.1);
+  transition: all 0.3s ease;
+  gap: 20rpx;
+}
+
+.contact-card:active {
+  transform: scale(0.98);
+  background: #F8F9FD;
+}
+
+/* 头像区域 */
+.card-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #92A8D1, #A8C1D4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.avatar-text {
+  color: white;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.photo-indicator {
+  position: absolute;
+  bottom: 2rpx;
+  right: 2rpx;
+  background: rgba(247, 202, 201, 0.9);
+  color: white;
+  border-radius: 50%;
+  width: 24rpx;
+  height: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14rpx;
+}
+
+/* 主要内容区域 */
+.card-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+/* 主要信息 */
+.main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.name-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  flex-shrink: 0;
+}
+
+.id-tag {
+  font-size: 18rpx;
+  color: #999;
+  background: #f5f5f5;
+  padding: 2rpx 8rpx;
+  border-radius: 8rpx;
+  flex-shrink: 0;
+}
+
+.phone-row {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.phone-icon {
+  font-size: 22rpx;
+  color: #92A8D1;
+  flex-shrink: 0;
+}
+
+.phone {
+  font-size: 26rpx;
+  color: #666;
+  font-weight: 500;
+  flex: 1;
+}
+
+/* 拨打按钮 */
+.call-btn {
+  background: linear-gradient(135deg, #92A8D1, #A8C1D4);
+  color: white;
+  border: none;
+  border-radius: 12rpx;
+  height: 36rpx;
+  padding: 0 5rpx;
+  font-size: 23rpx;
+  min-width: 70rpx;
+  line-height: 36rpx;
+  flex-shrink: 0;
+  margin-left: 10rpx;
+}
+
+/* 额外信息 */
+.extra-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+  margin-top: 4rpx;
+}
+
+.email, .address {
+  font-size: 22rpx;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 底部操作按钮 */
+.bottom-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10rpx;
+  margin-top: 8rpx;
+  padding-top: 8rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.edit-btn, .delete-btn {
+  height: 36rpx;
+  padding: 0 14rpx;
+  border-radius: 12rpx;
+  font-size: 20rpx;
+  border: none;
+  min-width: 60rpx;
+  line-height: 36rpx;
+}
+
+.edit-btn {
+  background: linear-gradient(135deg, #92A8D1, #A8C1D4);
+  color: white;
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #F7CAC9, #F4A6A3);
+  color: white;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 100rpx 40rpx;
+  background: white;
+  border-radius: 20rpx;
+  border: 2rpx solid #E1E8F5;
+}
+
+.empty-text {
+  display: block;
+  font-size: 32rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+}
+
+.empty-tip {
+  display: block;
+  font-size: 26rpx;
+  color: #ccc;
+  margin-bottom: 40rpx;
+}
+
+.clear-search-btn {
+  background: #92A8D1;
+  color: white;
+  border-radius: 25rpx;
+  font-size: 26rpx;
+  padding: 0 40rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: 1rpx solid #85A0CC;
+}
+
+/* 加载状态 */
+.loading-state {
+  text-align: center;
+  padding: 60rpx;
+  background: white;
+  border-radius: 20rpx;
+  border: 2rpx solid #E1E8F5;
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #999;
+}

@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/add/add",
+    "pages/edit/edit"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#92A8D1",
+    "navigationBarTitleText": "SEVENTEEN通讯录",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#F8F9FD"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "permission": {
+    "scope.camera": {
+      "desc": "需要访问相机来拍摄联系人照片"
+    },
+    "scope.writePhotosAlbum": {
+      "desc": "需要访问相册来选择联系人照片"
+    }
+  }
+}

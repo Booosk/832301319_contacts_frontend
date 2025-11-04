@@ -1,0 +1,123 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="header card">
+    <view class="title-section">
+      <text class="title">✏️ 编辑联系人</text>
+      <text class="subtitle">修改联系人信息</text>
+      <text class="change-indicator" wx:if="{{hasChanges}}">* 有未保存的更改</text>
+    </view>
+    <button class="back-btn" bindtap="onBack">返回</button>
+  </view>
+
+
+  <!-- 表单 -->
+  <view class="form card">
+    <!-- 照片上传 -->
+    <view class="form-item">
+      <text class="label">📷 联系人照片</text>
+      <view class="photo-section">
+        <view class="photo-upload-area" bindtap="choosePhoto">
+          <view wx:if="{{!photo}}" class="upload-placeholder">
+            <text class="upload-icon">➕</text>
+            <text class="upload-text">{{originalData && originalData.photo ? '重新上传' : '添加照片'}}</text>
+            <text class="upload-tip">可选，支持拍照或相册</text>
+          </view>
+          <view wx:else class="photo-preview" bindtap="previewPhoto">
+            <image src="{{photo}}" class="preview-image" mode="aspectFill" />
+            <view class="photo-overlay">
+              <text class="overlay-text">点击预览</text>
+            </view>
+          </view>
+        </view>
+        
+        <button wx:if="{{photo}}" class="remove-photo-btn" bindtap="removePhoto" disabled="{{isUploadingPhoto}}">
+          ✕ 删除
+        </button>
+      </view>
+      <text wx:if="{{isUploadingPhoto}}" class="uploading-text">照片上传中...</text>
+    </view>
+
+    <!-- 姓名 -->
+    <view class="form-item">
+      <text class="label required">👤 姓名</text>
+      <input 
+        class="input-field {{errors.name ? 'error' : ''}}"
+        value="{{name}}"
+        bindinput="onNameInput"
+        placeholder="请输入联系人姓名"
+        maxlength="20"
+      />
+      <text class="error-text" wx:if="{{errors.name}}">{{errors.name}}</text>
+    </view>
+
+    <!-- 电话 -->
+    <view class="form-item">
+      <text class="label required">📱 手机号</text>
+      <input 
+        class="input-field {{errors.phone ? 'error' : ''}}"
+        value="{{phone}}"
+        bindinput="onPhoneInput"
+        placeholder="请输入11位手机号"
+        type="number"
+        maxlength="11"
+      />
+      <text class="error-text" wx:if="{{errors.phone}}">{{errors.phone}}</text>
+    </view>
+
+    <!-- 邮箱 -->
+    <view class="form-item">
+      <text class="label">📧 邮箱</text>
+      <input 
+        class="input-field {{errors.email ? 'error' : ''}}"
+        value="{{email}}"
+        bindinput="onEmailInput"
+        placeholder="请输入邮箱地址（可选）"
+        type="email"
+      />
+      <text class="error-text" wx:if="{{errors.email}}">{{errors.email}}</text>
+    </view>
+
+    <!-- 地址 -->
+    <view class="form-item">
+      <text class="label">🏠 地址</text>
+      <input 
+        class="input-field"
+        value="{{address}}"
+        bindinput="onAddressInput"
+        placeholder="请输入联系地址（可选）"
+      />
+    </view>
+
+    <!-- 按钮组 -->
+    <view class="button-group">
+      <button class="secondary-btn" bindtap="resetForm" disabled="{{isSubmitting || !hasChanges}}">
+        重置
+      </button>
+      <!-- 临时移除禁用状态进行测试 -->
+      <button class="primary-btn" bindtap="submitForm" disabled="{{isSubmitting}}">
+        {{isSubmitting ? '保存中...' : '保存修改'}}
+      </button>
+    </view>
+  </view>
+
+  <!-- 联系人信息 -->
+  <view class="info-card card" wx:if="{{originalData}}">
+    <text class="info-title">📋 原始信息</text>
+    <view class="info-item">
+      <text class="info-label">联系人ID：</text>
+      <text class="info-value">{{originalData.id}}</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">创建时间：</text>
+      <text class="info-value">{{originalData.created_time}}</text>
+    </view>
+    <view class="info-item" wx:if="{{originalData.updated_time && originalData.updated_time !== originalData.created_time}}">
+      <text class="info-label">更新时间：</text>
+      <text class="info-value">{{originalData.updated_time}}</text>
+    </view>
+    <view class="info-item" wx:if="{{originalData.photo}}">
+      <text class="info-label">原有照片：</text>
+      <text class="info-value">已上传</text>
+    </view>
+  </view>
+</view>
